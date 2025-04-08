@@ -16,8 +16,8 @@ import msa.commons.parser.NumberParser;
 public class GetAircraftByIdEvent extends BaseHandler {
 
     @Override
-    public void handleCommand(Object data) {
-        long idAirport = NumberParser.toLong(data);
+    public void handleCommand(String json) {
+        long idAirport = this.gson.fromJson(json, Long.class);
         AirportDTO a = this.aircraftServices.getAirportById(idAirport);
         this.jmsEventPublisher.publish(EventId.GET_AIRPORT_BY_ID, a);
     }
