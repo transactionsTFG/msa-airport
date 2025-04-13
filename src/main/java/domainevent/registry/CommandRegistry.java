@@ -17,19 +17,12 @@ import msa.commons.microservices.airport.qualifier.GetAirportByIdQualifier;
 @Startup
 public class CommandRegistry {
     private Map<EventId, CommandHandler> handlers = new EnumMap<>(EventId.class);
-    private CommandHandler getAirportByIdHandler;
 
     @PostConstruct
     public void init(){
-        this.handlers.put(EventId.GET_AIRPORT_BY_ID, getAirportByIdHandler);
     }
 
     public CommandHandler getHandler(EventId eventId) {
         return this.handlers.get(eventId);
-    }
-
-    @Inject
-    public void setGetAircraftByIdHandler(@GetAirportByIdQualifier CommandHandler getAirportByIdHandler) {
-        this.getAirportByIdHandler = getAirportByIdHandler;
     }
 }
