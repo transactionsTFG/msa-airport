@@ -6,12 +6,10 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.inject.Inject;
 
 import domainevent.command.handler.CommandHandler;
 
 import msa.commons.event.EventId;
-import msa.commons.microservices.airport.qualifier.GetAirportByIdQualifier;
 
 @Singleton
 @Startup
