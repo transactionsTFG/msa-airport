@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -18,10 +20,17 @@ public class AirportController {
     private AirportService airportService;
 
     @GET
-    @Path("/name/{airportName}")
-    public AirportDTO getAirportByName(@PathParam("airportName") String airportName) {
-        return airportService.getAirportByName(airportName);
+    @Path("/city/{city}")
+    public List<AirportDTO> getAirportByCity(@PathParam("city") String city) {
+        return airportService.getAirportByCity(city);
     }
+
+    @GET
+    @Path("/country/{country}")
+    public List<AirportDTO> getAirportByCountry(@PathParam("country") String country) {
+        return airportService.getAirportByCountry(country);
+    }
+
 
     @EJB
     public void setAirportService(AirportService airportService) {
