@@ -21,5 +21,16 @@ public class AirportServiceImpl implements AirportService {
         return AirportMapper.INSTANCE.entityToDto(airport);
     }
 
+    @Override
+    public AirportDTO getAirportByName(String name) {
+        Airport airport = entityManager.createQuery("SELECT a FROM Airport a WHERE a.name = :name", Airport.class)
+                .setParameter("name", name)
+                .setLockMode(LockModeType.OPTIMISTIC)
+                .getSingleResult();
+        if (airport == null) 
+            return null;
+        return AirportMapper.INSTANCE.entityToDto(airport);
+    }
+
     @Inject public void setEntityManager(EntityManager entityManager) { this.entityManager = entityManager;}
 }

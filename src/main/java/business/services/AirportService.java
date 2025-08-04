@@ -4,4 +4,5 @@ import business.airport.AirportDTO;
 
 public interface AirportService {
     AirportDTO getAirportById(long id);
+    AirportDTO getAirportByName(String name);
 }
