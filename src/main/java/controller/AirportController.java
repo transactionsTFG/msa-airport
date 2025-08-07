@@ -31,6 +31,11 @@ public class AirportController {
         return airportService.getAirportByCountry(country);
     }
 
+   @GET
+   @Path("{id}")
+    public AirportDTO getAirportById(@PathParam("id") Long id) {
+        return airportService.getAirportById(id);
+    }
 
     @EJB
     public void setAirportService(AirportService airportService) {
